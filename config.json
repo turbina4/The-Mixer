@@ -1,0 +1,9 @@
+{
+	"apps": [
+		"master", 
+		"opera.exe", 
+		"Discord.exe"
+	],
+	"port": "Com3",
+	"baud-rate": 115200
+}
