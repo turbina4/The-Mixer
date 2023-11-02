@@ -13,6 +13,8 @@ The Arduino Python Audio Controller (APVC) is a Python-based application that al
 
 Just download APVC-Main.exe
 
+It may be necessary to install `CH341` drivers.
+
 ## Configuration
 
 Before using APVC, you need to configure it with the following parameters in the `config.yaml` file:
