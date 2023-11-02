@@ -1,0 +1,1 @@
+pyinstaller --windowed --onefile --icon=icon.ico --add-data "config.yaml;." --add-data "icon.png;." APVC-Main.py
