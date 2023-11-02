@@ -1,15 +1,17 @@
 # Arduino Python Audio Controller (APVC)
 
 The Arduino Python Audio Controller (APVC) is a Python-based application that allows you to control the volume of multiple programs running on your computer using Arduino and potentiometers. It offers a custom-made solution to control audio levels effortlessly.
+**WORKS ONLY WITH WINDOWS**
+
+-   [Installation](#installation)
+-   [Configuration](#configuration)
+-   [Arduino Configuration](#arduino-configuration)
+-   [Usage](#usage)
+-   [Features](#features)
 
 ## Installation
 
-To use APVC, you need to install the following Python libraries: comtypes pycaw pyyaml pywin32 pystray Pillow
-
-```bash
-pip install comtypes pycaw pyyaml pywin32 pystray Pillow
-
-```
+Just download APVC-Main.exe
 
 ## Configuration
 
@@ -17,60 +19,81 @@ Before using APVC, you need to configure it with the following parameters in the
 
 -   **"port"**: Choose the COM port to which your Arduino is connected.
 
+-   **"port: auto"**: Program automatically selects port. Might not work with more than 1 arduino connected to the computer
+
 -   **"baud-rate"**: Set the baud rate to match the configuration on your Arduino.
 
 -   **"apps"**: Enter the names of the programs you want to control with the potentiometers. You can organize applications into groups to manage audio settings efficiently. You can have multiple groups, and one potentiometer controls the entire group or the programs within that group.
 
+    -   **Master**: Adjusts the overall system volume.
+    -   **Groups**: Control volumes of specific groups of applications.
+    -   **Individual Applications**: Adjust volumes for specific applications.
+
     -   Ensure that the number of programs and groups listed in `apps` does not exceed the number of available potentiometers connected to your Arduino. Having more entries in `apps` than available potentiometers may lead to error.
+
+    **Example**
 
     ```yaml
     port: Com6
     baud-rate: 9600
     apps:
         - master
+        - spotify.exe
         - game:
               - geometrydash.exe
               - terraria.exe
-              - rust.exe
+              - rustclient.exe
               - fortnite.exe
+        - discord.exe
         - group:
               - opera.exe
-              - discord.exe
+              - chrome.exe
     ```
 
-In this example, there are two groups: "game" and "group." The "master" entry represents the overall system volume control. Adjusting the potentiometer assigned to "master" will affect the system's master volume. The "game" group includes multiple game-related programs, and adjusting the group's potentiometer will control the volumes of all games within that group. Similarly, the "group" contains multiple programs, and adjusting its potentiometer will control the volumes of all programs in that group.
+    **Different example**
+
+    ```yaml
+    port: auto
+    baud-rate: 9600
+    apps:
+        - master
+        - opera.exe
+        - discord.exe
+        - spotify.exe
+        - game:
+              - geometrydash.exe
+              - rustclient.exe
+              - cs2.exe
+    ```
 
 ## Arduino Configuration
 
-1. Configure the `ArduinoCode.ino` according to your needs:
+1. Configure the `arduino_code.ino` according to your needs:
 
-    - Set the number of potentiometers by changing `const byte numberOfPotentiometers = X;`, where `X` is the desired number.
+    - Set the number of potentiometers by changing `const int NUM_SLIDERS = X;`, where `X` is the desired number.
 
-    - Define the potentiometers' pins using the `potentiometersPins` array.
+    - Define the potentiometers' pins using the `const int analogInputs` array.
+
+    **Example**
+
+    ```
+    const int NUM_SLIDERS = 5;
+    const int analogInputs[NUM_SLIDERS] = {A0, A1, A2, A3, A4};
+    ```
 
 2. Upload the modified code to your Arduino.
+
+> Arduino code is same as [deej arduino code](https://github.com/omriharel/deej)
 
 ## Usage
 
 1. Connect your Arduino to your computer and ensure it has been programmed with the appropriate code as described in the "Arduino Configuration" section.
 
-2. Configure the `config.yaml` file with the appropriate settings, as described in the "Configuration" section.
+2. Run the `APVC-main.exe`. If the program doesn't work, check `config.yaml`. You can do this by clicking `Change config` in APVC options. If you change config make sure that you reload program by clicking `reload` in APVC options.
 
-3. Run the Python script `APVC.py`. If the program doesn't work, make sure that the `config.yaml` file's location is same as the main script location.
+3. Use the potentiometers connected to your Arduino to control the volume of the specified programs and groups.
 
-4. Use the potentiometers connected to your Arduino to control the volume of the specified programs and groups.
-
-    - **Master**: Adjusts the overall system volume.
-    - **Groups**: Control volumes of specific groups of applications.
-    - **Individual Applications**: Adjust volumes for specific applications.
-
-Alternatively, you can use the Python script `APVC-console.py`:
-
-1. Connect your Arduino to your computer and ensure it has been programmed with the appropriate code as described in the "Arduino Configuration" section.
-
-2. Configure the `config.yaml` file with the appropriate settings, as described in the "Configuration" section.
-
-3. Run the Python script `APVC-console.py` to launch the console-based application. This version does not include the `reload` function, and it operates in the console interface without a system tray icon.
+`All option are in the system tray icon options.`
 
 ## Features
 
@@ -78,7 +101,9 @@ APVC provides additional features:
 
 -   **Running in the Background**: The main script runs silently in the background. You can access it through the system tray (hidden icons) on your taskbar.
 
--   **Reload Configuration**: Right-click on the system tray icon and select "Reload" to refresh the configuration from `config.yaml`.
+-   **Reload Configuration**: Right-click on the system tray icon and select "Reload" to refresh the configuration.
+
+-   **Open Config**: Right-click on the system tray icon and select "Open Config" to open and edit `config.yaml`.
 
 -   **Exit**: To close the program entirely, right-click on the system tray icon and select "Exit."
 

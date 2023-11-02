@@ -1,0 +1,11 @@
+port: auto
+baud-rate: 9600
+apps:
+    - master
+    - opera.exe
+    - discord.exe
+    - spotify.exe
+    - game:
+          - geometrydash.exe
+          - rustclient.exe
+          - cs2.exe
