@@ -4,8 +4,12 @@ apps:
     - master
     - opera.exe
     - discord.exe
-    - spotify.exe
+    - group:
+          - spotify.exe
+          - AMPLibraryAgent.exe
     - game:
           - geometrydash.exe
+          - albion-online.exe
           - rustclient.exe
+          - robloxplayerbeta.exe
           - cs2.exe

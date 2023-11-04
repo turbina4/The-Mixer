@@ -13,10 +13,12 @@ from time import sleep
 
 appList = []
 running = True
+config = {}
 
 # Define the path for the config file based on the script's directory
 config_file_path = os.path.join(os.path.dirname(__file__), 'config.yaml')
 icon_file_path = os.path.join(os.path.dirname(__file__), 'icon.png')
+folder_path = os.path.dirname(__file__)
 
 
 def find_arduino_port():
@@ -33,7 +35,7 @@ arduino_port = find_arduino_port()
 # Read config.yaml
 def reload():
     global appList, config
-    with open(config_file_path, 'r') as file:
+    with open(f"{folder_path}\\config.yaml", 'r') as file:
         config = yaml.load(file, Loader = yaml.FullLoader)
     appList.clear()
     if "apps" in config:
@@ -51,9 +53,9 @@ def on_clicked(icon, item):
         running = False
         sys.exit()
     elif str(item) == "Open Config":
-        if os.path.exists(config_file_path):
-            print(f"Found config: {config_file_path}")
-            os.startfile(config_file_path)
+        if os.path.exists(f"{folder_path}\\config.yaml"):
+            print(f"Found config: {config_file_path}\\config.yaml")
+            os.startfile(f"{folder_path}\\config.yaml")
     elif str(item) == "Reload":
         reload()
         check_config()
@@ -112,18 +114,17 @@ def check_config():
         for k in config["apps"]:
             appList.append(k)
 
-        sleep(.15)
+        sleep(.25)
         while running:
             # Read data from the SerialPort
             try:
                 line = ser.readline()
             except Exception as e:
                 print(e)
-                sys.exit()
+                line = None
             decoded_line = line.decode('utf-8', errors = 'ignore')
             result = []
             try:
-                sleep(.01)
                 # Convert data from SerialPort to an array
                 parts = decoded_line.split('|')
                 result = [round(float(part) / 1023.0, 2) for part in parts if part.strip()]

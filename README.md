@@ -11,9 +11,9 @@ The Arduino Python Audio Controller (APVC) is a Python-based application that al
 
 ## Installation
 
-Just download APVC-Main.exe
+Download APVC-download.zip -> Unzip it -> Enjoy
 
-It may be necessary to install `CH341` drivers.
+It may be necessary to install `CH340` drivers.
 
 ## Configuration
 
@@ -61,10 +61,14 @@ Before using APVC, you need to configure it with the following parameters in the
         - master
         - opera.exe
         - discord.exe
-        - spotify.exe
+        - group:
+              - spotify.exe
+              - AMPLibraryAgent.exe
         - game:
               - geometrydash.exe
+              - albion-online.exe
               - rustclient.exe
+              - robloxplayerbeta.exe
               - cs2.exe
     ```
 
@@ -103,9 +107,9 @@ APVC provides additional features:
 
 -   **Running in the Background**: The main script runs silently in the background. You can access it through the system tray (hidden icons) on your taskbar.
 
--   **Reload Configuration**: Right-click on the system tray icon and select "Reload" to refresh the configuration.
-
 -   **Open Config**: Right-click on the system tray icon and select "Open Config" to open and edit `config.yaml`.
+
+-   **Reload Configuration**: Right-click on the system tray icon and select "Reload" to refresh the configuration.
 
 -   **Exit**: To close the program entirely, right-click on the system tray icon and select "Exit."
 
