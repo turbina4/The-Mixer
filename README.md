@@ -95,7 +95,7 @@ Before using APVC, you need to configure it with the following parameters in the
 
 1. Connect your Arduino to your computer and ensure it has been programmed with the appropriate code as described in the "Arduino Configuration" section.
 
-2. Run the `APVC-main.exe`. If the program doesn't work, check `config.yaml`. You can do this by clicking `Change config` in APVC options. If you change config make sure that you reload program by clicking `reload` in APVC options.
+2. Run the `APVC.exe` or `APVC-Main.exe`. If the program doesn't work, check `config.yaml`. You can do this by clicking `Change config` in APVC options. If you change config make sure that you reload program by clicking `reload` in APVC options.
 
 3. Use the potentiometers connected to your Arduino to control the volume of the specified programs and groups.
 
@@ -112,6 +112,16 @@ APVC provides additional features:
 -   **Reload Configuration**: Right-click on the system tray icon and select "Reload" to refresh the configuration.
 
 -   **Exit**: To close the program entirely, right-click on the system tray icon and select "Exit."
+
+## Autostart with Windows
+
+If you want APVC to start automatically with Windows, you can add a shortcut to the program in the startup folder. Here's how:
+
+1. Press `Win + R` to open the Run dialog.
+2. Type `%appdata%\Microsoft\Windows\Start Menu\Programs\Startup` and press Enter.
+3. Copy the shortcut of `APVC.exe` into this folder.
+
+Now, APVC will launch automatically when you start your computer.
 
 ## Note
 
