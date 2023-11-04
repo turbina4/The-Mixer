@@ -8,6 +8,7 @@ The Arduino Python Audio Controller (APVC) is a Python-based application that al
 -   [Arduino Configuration](#arduino-configuration)
 -   [Usage](#usage)
 -   [Features](#features)
+-   [Autostart with Windows](#Autostart-with-Windows)
 
 ## Installation
 
