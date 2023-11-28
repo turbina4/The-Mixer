@@ -1,6 +1,6 @@
 # Arduino Python Volume Controller (APVC)
 
-The Arduino Python Audio Controller (APVC) is a Python-based application that allows you to control the volume of multiple programs running on your computer using Arduino and potentiometers. It offers a custom-made solution to control audio levels effortlessly.
+The Arduino Python Volume Controller (APVC) is a Python-based application that allows you to control the volume of multiple programs running on your computer using Arduino and potentiometers. It offers a custom-made solution to control audio levels effortlessly.
 **WORKS ONLY WITH WINDOWS**
 
 -   [Installation](#installation)
