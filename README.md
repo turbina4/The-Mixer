@@ -69,7 +69,7 @@ Before using APVC, you need to configure it with the following parameters in the
               - geometrydash.exe
               - albion-online.exe
               - rustclient.exe
-              - robloxplayerbeta.exe
+              - FortniteClient-Win64-Shipping.exe
               - cs2.exe
     ```
 
