@@ -92,6 +92,10 @@ Before using APVC, you need to configure it with the following parameters in the
 
 > Arduino code is same as [deej arduino code](https://github.com/omriharel/deej)
 
+## Schematic
+
+![Schematic img](Schematic.png)
+
 ## Usage
 
 1. Connect your Arduino to your computer and ensure it has been programmed with the appropriate code as described in the "Arduino Configuration" section.
