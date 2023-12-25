@@ -94,7 +94,7 @@ Before using APVC, you need to configure it with the following parameters in the
 
 ## Schematic
 
-![Schematic img](Schematic.png)
+![Schematic img](img/Schematic.png)
 
 ## Usage
 
@@ -105,6 +105,8 @@ Before using APVC, you need to configure it with the following parameters in the
 3. Use the potentiometers connected to your Arduino to control the volume of the specified programs and groups.
 
 `All option are in the system tray icon options.`
+
+![Where to find it](img/whereToFindIt.png)
 
 ## Features
 

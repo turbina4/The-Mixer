@@ -49,12 +49,12 @@ reload()
 def on_clicked(icon, item):
     global running
     if str(item) == "Exit":
-        icon.stop()
         running = False
+        icon.stop()
         sys.exit()
     elif str(item) == "Open Config":
         if os.path.exists(f"{folder_path}\\config.yaml"):
-            print(f"Found config: {config_file_path}\\config.yaml")
+            # print(f"Found config: {config_file_path}\\config.yaml")
             os.startfile(f"{folder_path}\\config.yaml")
     elif str(item) == "Reload":
         reload()
@@ -83,7 +83,6 @@ def check_config():
         # Variables
         port = None
         ser = None
-
         try:
             # Get port and baud rate from the configuration
             if config["port"].lower() == "auto".lower():
@@ -100,8 +99,9 @@ def check_config():
         baud_rate = config["baud-rate"]
 
         try:
-            ser = serial.Serial(port, baud_rate)
+            ser = serial.Serial(port, baud_rate, timeout=1)
         except Exception as e:
+            ser.close()
             print(f"Error: {e}, {serial.SerialException}")
 
         print(ser)
@@ -156,6 +156,8 @@ def check_config():
                                         volume.SetMasterVolumeLevelScalar(result[appList.index(i)], None)
             except Exception as e:
                 print(f'!ERROR: {e}, Failed to change volume')
+        else:
+            ser.close()
 
 
 check_config()
