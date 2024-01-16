@@ -6,6 +6,7 @@ The Arduino Python Volume Controller (APVC) is a Python-based application that a
 -   [Installation](#installation)
 -   [Configuration](#configuration)
 -   [Arduino Configuration](#arduino-configuration)
+-   [Schematic](#schematic)
 -   [Usage](#usage)
 -   [Features](#features)
 -   [Autostart with Windows](#Autostart-with-Windows)

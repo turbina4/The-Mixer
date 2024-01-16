@@ -9,17 +9,16 @@ from comtypes import CLSCTX_ALL
 from pycaw.pycaw import AudioUtilities, IAudioEndpointVolume
 import serial.tools.list_ports
 import threading
-from time import sleep
+from pathlib import Path
 
 appList = []
 running = True
 config = {}
 
 # Define the path for the config file based on the script's directory
-config_file_path = os.path.join(os.path.dirname(__file__), 'config.yaml')
+folder_path = os.path.dirname(os.path.realpath(sys.argv[0]))
+config_file_path = os.path.join(folder_path, 'config.yaml')
 icon_file_path = os.path.join(os.path.dirname(__file__), 'icon.png')
-folder_path = os.path.dirname(__file__)
-
 
 def find_arduino_port():
     ports = serial.tools.list_ports.comports()
@@ -76,13 +75,16 @@ def icon_thread():
 icon_thread = threading.Thread(target = icon_thread)
 icon_thread.start()
 
+ser = None
+
 
 def check_config():
     if all(key in config for key in ["port", "baud-rate", "apps"]):
 
         # Variables
         port = None
-        ser = None
+        global ser
+
         try:
             # Get port and baud rate from the configuration
             if config["port"].lower() == "auto".lower():
@@ -97,14 +99,14 @@ def check_config():
             print(f"Error: {e}")
 
         baud_rate = config["baud-rate"]
+        while ser == None:
+            try:
+                ser = serial.Serial(port, baud_rate)
+            except Exception as e:
+                print(f"Error: {e}, {serial.SerialException}")
 
-        try:
-            ser = serial.Serial(port, baud_rate, timeout=1)
-        except Exception as e:
-            ser.close()
-            print(f"Error: {e}, {serial.SerialException}")
+        # print(ser)
 
-        print(ser)
         # Get the audio devices and interface for volume control
         devices = AudioUtilities.GetSpeakers()
         interface = devices.Activate(IAudioEndpointVolume._iid_, CLSCTX_ALL, None)
@@ -114,7 +116,6 @@ def check_config():
         for k in config["apps"]:
             appList.append(k)
 
-        sleep(.25)
         while running:
             # Read data from the SerialPort
             try:
@@ -129,7 +130,9 @@ def check_config():
                 parts = decoded_line.split('|')
                 result = [round(float(part) / 1023.0, 2) for part in parts if part.strip()]
             except ValueError as e:
-                print(f'!Error: {e}, Failed to convert.')
+                print(f'!Error: {e} Failed to convert.')
+
+            # print(result)
 
             try:
                 # Get a list of all audio sessions
@@ -155,7 +158,7 @@ def check_config():
                                     elif str(j).lower() == 'master':
                                         volume.SetMasterVolumeLevelScalar(result[appList.index(i)], None)
             except Exception as e:
-                print(f'!ERROR: {e}, Failed to change volume')
+                print(f'!ERROR: {e} Failed to change volume')
         else:
             ser.close()
 
