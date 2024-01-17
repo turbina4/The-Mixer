@@ -1,1 +1,0 @@
-pyinstaller -windowed --icon=src\logo.ico --add-data "src\config.yaml;." --add-data "src\icon.png;." src\APVC-Main.py
