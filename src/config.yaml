@@ -8,5 +8,4 @@ apps:
     - game:
           - geometrydash.exe
           - rustclient.exe
-          - cs2.exe
-          - terraria.exe
+          - ForzaHorizon5.exe

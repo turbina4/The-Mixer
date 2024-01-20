@@ -131,6 +131,10 @@ If you want The Mixer to start automatically with Windows, you can add a shortcu
 
 Now, The Mixer will launch automatically when you start your computer.
 
+## Icon
+
+I downloaded icon from [here](https://www.flaticon.com/free-icon/dj-mixer_3721701?term=mixer&related_id=3721701)
+
 ## Note
 
 Ensure you have the required hardware set up, including the potentiometers and Arduino, for APVC to work effectively.
