@@ -1,6 +1,6 @@
-# Arduino Python Volume Controller (APVC)
+# The Mixer
 
-The Arduino Python Volume Controller (APVC) is a Python-based application that allows you to control the volume of multiple programs running on your computer using Arduino and potentiometers. It offers a custom-made solution to control audio levels effortlessly.
+The Mixer is a Python-based application that allows you to control the volume of multiple programs running on your computer using Arduino and potentiometers. It offers a custom-made solution to control audio levels effortlessly.
 **WORKS ONLY WITH WINDOWS**
 
 -   [Installation](#installation)
@@ -13,13 +13,13 @@ The Arduino Python Volume Controller (APVC) is a Python-based application that a
 
 ## Installation
 
-Download APVC-download.zip -> Unzip it -> Enjoy
+Download mixer.zip -> Unzip it -> Enjoy
 
 It may be necessary to install `CH340` drivers.
 
 ## Configuration
 
-Before using APVC, you need to configure it with the following parameters in the `config.yaml` file:
+Before using The Mixer, you need to configure it with the following parameters in the `config.yaml` file:
 
 -   **"port"**: Choose the COM port to which your Arduino is connected.
 
@@ -101,7 +101,7 @@ Before using APVC, you need to configure it with the following parameters in the
 
 1. Connect your Arduino to your computer and ensure it has been programmed with the appropriate code as described in the "Arduino Configuration" section.
 
-2. Run the `APVC.exe` or `APVC-Main.exe`. If the program doesn't work, check `config.yaml`. You can do this by clicking `Change config` in APVC options. If you change config make sure that you reload program by clicking `reload` in APVC options.
+2. Run the `mixer.exe`. If the program doesn't work, check `config.yaml`. You can do this by clicking `Change config` in The Mixer options. If you change config make sure that you reload program by clicking `reload` in The Mixer options.
 
 3. Use the potentiometers connected to your Arduino to control the volume of the specified programs and groups.
 
@@ -111,7 +111,7 @@ Before using APVC, you need to configure it with the following parameters in the
 
 ## Features
 
-APVC provides additional features:
+The Mixer provides additional features:
 
 -   **Running in the Background**: The main script runs silently in the background. You can access it through the system tray (hidden icons) on your taskbar.
 
@@ -123,13 +123,13 @@ APVC provides additional features:
 
 ## Autostart with Windows
 
-If you want APVC to start automatically with Windows, you can add a shortcut to the program in the startup folder. Here's how:
+If you want The Mixer to start automatically with Windows, you can add a shortcut to the program in the startup folder. Here's how:
 
 1. Press `Win + R` to open the Run dialog.
 2. Type `%appdata%\Microsoft\Windows\Start Menu\Programs\Startup` and press Enter.
-3. Copy the shortcut of `APVC.exe` into this folder.
+3. Copy the shortcut of `Mixer.exe` into this folder.
 
-Now, APVC will launch automatically when you start your computer.
+Now, The Mixer will launch automatically when you start your computer.
 
 ## Note
 

@@ -61,7 +61,7 @@ def on_clicked(icon, item):
 
 
 image = PIL.Image.open(icon_file_path)
-global_icon = pystray.Icon("APVC", image, menu = pystray.Menu(
+global_icon = pystray.Icon("Mixer", image, menu = pystray.Menu(
     pystray.MenuItem("Reload", on_clicked),
     pystray.MenuItem("Open Config", on_clicked),
     pystray.MenuItem("Exit", on_clicked)

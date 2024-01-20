@@ -1,1 +1,1 @@
-pyinstaller --onefile --windowed --icon=src\logo.ico --add-data "src\icon.png;." src\APVC-Main.py
+pyinstaller --onefile --windowed --icon=src\logo.ico --add-data "src\icon.png;." src\Mixer.py
